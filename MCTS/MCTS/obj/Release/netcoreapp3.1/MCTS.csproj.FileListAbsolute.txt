@@ -1,0 +1,12 @@
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.exe
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.deps.json
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.runtimeconfig.json
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.runtimeconfig.dev.json
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.dll
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\bin\Release\netcoreapp3.1\MCTS.pdb
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.AssemblyInfoInputs.cache
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.AssemblyInfo.cs
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.csproj.CoreCompileInputs.cache
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.dll
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.pdb
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.genruntimeconfig.cache
