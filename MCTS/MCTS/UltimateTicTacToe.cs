@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 namespace MCTS
 {
@@ -13,24 +14,14 @@ namespace MCTS
         public IUTTTPlayer first;
         public IUTTTPlayer second;
         private IUTTTPlayer current;
-        public void RunGame2NTimes(int n)
+        public (int,int) RunGame2NTimes(int n)
         {
             for(int i = 0; i < n; i++)
             {
                 RunGame(true);
-                Console.WriteLine("=================================");
-                Console.WriteLine($"Game {i*2 + 1}/{2 * n} Result: {state.gameState}");
-                Console.WriteLine("=================================");
                 RunGame(false);
-                Console.WriteLine("=================================");
-                Console.WriteLine($"Game {i*2 + 2}/{2 * n} Result: {state.gameState}");
-                Console.WriteLine("=================================");
             }
-            Console.WriteLine("=================================");
-            Console.WriteLine("first player won  " + firstWins  +" times");
-            Console.WriteLine("second player won " + secondWins +" times");
-            Console.WriteLine("draws             " + draws);
-            Console.WriteLine("=================================");
+            return (firstWins, secondWins);
         }
         public void RunGame(bool firstIsFirst)
         {
@@ -67,11 +58,15 @@ namespace MCTS
                     if(state.gameState == GameState.firstWin)
                     {
                         firstWins++;
+                        first.OnWin();
+                        second.OnLose("");
                         break;
                     }
                     if (state.gameState == GameState.secondWin)
                     {
                         secondWins++;
+                        first.OnLose("");
+                        second.OnWin();
                         break;
                     }
                     if (state.gameState == GameState.draw)
@@ -181,6 +176,7 @@ namespace MCTS
         }
         public List<(int, int)> LegalMoves()
         {
+            if (gameState != GameState.running) return new List<(int, int)>();
             int rx = (lastMove.Item1 % 3);
             int ry = (lastMove.Item2 % 3);
             List<(int, int)> legalMoves = new List<(int, int)>();
@@ -323,43 +319,47 @@ namespace MCTS
             int ix = lastMove.Item1;
             int iy = lastMove.Item2;
             //columns
-            for (int x = rx * 3; x < rx * 3 + 3; x++)
             {
+                int x = ix;
                 PositionState state = boardState[x, ry * 3];
-                if (state == PositionState.empty) continue;
-                for (int y = ry * 3 + 1; y < ry * 3 + 3; y++)
+                if (state != PositionState.empty)
                 {
-                    if (state != boardState[x, y])
+                    for (int y = ry * 3 + 1; y < ry * 3 + 3; y++)
                     {
-                        break;
-                    }
-                    else
-                    {
-                        if (y == ry * 3 + 2)
+                        if (state != boardState[x, y])
                         {
-                            boardBoardState[rx, ry] = state == PositionState.first ? GameState.firstWin : GameState.secondWin;
-                            return;
+                            break;
+                        }
+                        else
+                        {
+                            if (y == ry * 3 + 2)
+                            {
+                                boardBoardState[rx, ry] = state == PositionState.first ? GameState.firstWin : GameState.secondWin;
+                                return;
+                            }
                         }
                     }
                 }
             }
             //rows
-            for (int y = ry * 3; y < ry * 3 + 3; y++)
             {
+                int y = iy;
                 PositionState state = boardState[rx * 3, y];
-                if (state == PositionState.empty) continue;
-                for (int x = rx * 3 + 1; x < rx * 3 + 3; x++)
+                if (state != PositionState.empty)
                 {
-                    if (state != boardState[x, y])
+                    for (int x = rx * 3 + 1; x < rx * 3 + 3; x++)
                     {
-                        break;
-                    }
-                    else
-                    {
-                        if (x == rx * 3 + 2)
+                        if (state != boardState[x, y])
                         {
-                            boardBoardState[rx, ry] = state == PositionState.first ? GameState.firstWin : GameState.secondWin;
-                            return;
+                            break;
+                        }
+                        else
+                        {
+                            if (x == rx * 3 + 2)
+                            {
+                                boardBoardState[rx, ry] = state == PositionState.first ? GameState.firstWin : GameState.secondWin;
+                                return;
+                            }
                         }
                     }
                 }

@@ -15,11 +15,11 @@ namespace MCTS
             c = 1.41421356237f;
         }
         MCTSNode root;
-        MCTSNode[] legalMoves;
-        Random random;
-        Stopwatch stopwatch;
+        readonly Random random;
+        readonly Stopwatch stopwatch;
         PositionState myPosition;
-        float c;
+        readonly float c;
+        private long time;
         void NodeExpansion(MCTSNode node)
         {
             foreach ((int, int) move in node.state.LegalMoves())
@@ -37,7 +37,7 @@ namespace MCTS
             stopwatch.Restart();
             root = new MCTSNode(state);
             NodeExpansion(root);
-            while(stopwatch.ElapsedMilliseconds<100)
+            while(stopwatch.ElapsedMilliseconds<time)
             {
                 Rollout(ChooseChild());
             }
@@ -51,9 +51,11 @@ namespace MCTS
                     maxN = child.n;
                 }
             }
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"MC Flat number of simulations {root.n} with average reward {root.vAvg}");
-            Console.ResetColor();
+            //Console.ForegroundColor = ConsoleColor.Cyan;
+            //Console.WriteLine($"MC number of simulations {root.n} with average reward {root.vAvg}");
+            //Console.ResetColor();
+            //if (time == 1000) Console.WriteLine(root.n);
+            time = 100;
             return move;
         }
         MCTSNode ChooseChild()
@@ -171,6 +173,7 @@ namespace MCTS
         public void OnStart(bool isFirst, PositionState player)
         {
             myPosition = player;
+            time = 1000;
         }
 
         public void OnWin()

@@ -6,7 +6,7 @@ namespace MCTS
 {
     class RandomPlayer : IUTTTPlayer
     {
-        Random random;
+        readonly Random random;
         public RandomPlayer()
         {
             random = new Random();

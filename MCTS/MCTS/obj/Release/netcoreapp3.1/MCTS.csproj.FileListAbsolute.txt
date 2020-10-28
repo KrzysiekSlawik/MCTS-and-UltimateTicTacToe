@@ -10,3 +10,4 @@ C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release
 C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.dll
 C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.pdb
 C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.genruntimeconfig.cache
+C:\Users\48534\Documents\GitHub\MCTS-and-UltimateTicTacToe\MCTS\MCTS\obj\Release\netcoreapp3.1\MCTS.csprojAssemblyReference.cache
